@@ -129,6 +129,8 @@ def parse_parser(parser, data=None, **kwargs):
                     name = [action.dest]
                 else:
                     name = [action.metavar]
+            elif action.metavar is not None:
+                name = [f"{option} {action.metavar}" for option in name]
             # Skip lines for subcommands
             if name == ['==SUPPRESS==']:
                 continue
